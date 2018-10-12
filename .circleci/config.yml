@@ -2,9 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/android:api-28-alpha
     steps:
       - checkout
       - run:
           name: CURL_CMD
-          command: $CURL_CMD
+          command: >-
+                      curl -X POST --data 'payload={"text": "<!here>"}' $SLACK_URL
